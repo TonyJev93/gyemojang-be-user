@@ -1,0 +1,45 @@
+spring:
+  jpa:
+    database: mysql
+    open-in-view: false
+    properties:
+      hibernate:
+        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    name: datasource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 5
+      
+---
+spring:
+  config:
+    activate:
+      on-profile: "local-db"
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:23306/gyemojang
+    username: test
+    password: test
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "test-db"
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:mysql://localhost:23306/gyemojangTest
+    username: test
+    password: test
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true

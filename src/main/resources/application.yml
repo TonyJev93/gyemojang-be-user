@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: gyemojang-be-user
+  profiles:
+    include: db
+    group:
+      local: local-db
+      test: test-db
+    active: test
