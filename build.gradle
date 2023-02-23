@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.8'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'maven-publish' // jitpack 배포를 위해 추가
 }
 
 group = 'com.tonyjev93.gyemojang'
@@ -34,4 +35,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+// jitpack 배포를 위해 추가
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
 }

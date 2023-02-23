@@ -1,0 +1,2 @@
+# jitpack 는 기본적으로 빌드를 jdk 1.8로 수행
+jdk: openjdk11
